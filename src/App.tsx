@@ -1,22 +1,18 @@
 import React from 'react';
-import { Outlet, Route, Routes } from 'react-router-dom';
-import { AuthenticationPage } from './pages/RegisterPage';
+import { Route, Routes } from 'react-router-dom';
+import { ConversationChannelPage } from './pages/ConversationChannelPage';
+import { ConversationPage } from './pages/ConversationPage';
+import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<AuthenticationPage />}></Route>
-        <Route
-          path="conversations"
-          element={
-            <div>
-              <div>Conversations</div>
-              <Outlet />
-            </div>
-          }
-        >
-          <Route path=":id" element={<div>Conversation ID Page</div>} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="conversations" element={<ConversationPage />}>
+          <Route path=":id" element={<ConversationChannelPage />} />
         </Route>
       </Routes>
     </>
